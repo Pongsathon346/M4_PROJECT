@@ -46,6 +46,8 @@ function showSearch(data){
     let box = document.createElement('div')
         box.classList.add('card','col-sm-3','mx-3','my-2')
         box.style.width="18rem"
+        box.style.backgroundColor="#141414"
+        box.style.color="white"
     let card = document.createElement('div')
         let image = document.createElement('img')
         image.classList.add('card-img-top')
@@ -62,7 +64,7 @@ function showSearch(data){
         cardTitle.appendChild(title)
         cardTitle.appendChild(detail)
         let button = document.createElement('button')
-        button.classList.add("btn","btn-success")
+        button.classList.add("btn","btn-danger")
         button.innerHTML = "Add Favorite"
         button.addEventListener('dblclick', function(){
             let confirmadd = confirm(`คุณอยากเพิ่ม ${data.title}  เข้าไปใน Favorite หรือไม่`)
@@ -101,6 +103,8 @@ function showFav(data){
     let box = document.createElement('div')
         box.classList.add('card','col-sm-3','mx-3','my-2')
         box.style.width="18rem"
+        box.style.backgroundColor="#141414"
+        box.style.color="white"
     let card = document.createElement('div')
     let image = document.createElement('img')
     image.style.textAlign="center"
@@ -182,6 +186,7 @@ function addfavDB(anime){
     }).then(data=>{
         alert('Success')
         id++
+        
     }).catch(error=>{
         alert('Error')
     })
@@ -223,7 +228,7 @@ function deleteFav (id) {
             box.style.border="2px solid black"
             box.style.borderRadius="10px"
             box.style.margin="10px"
-            box.style.backgroundColor="#5E6668	"
+            box.style.backgroundColor="#141414"
             box.style.color="white"
         let card = document.createElement('div')
         let image = document.createElement('img')
