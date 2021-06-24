@@ -10,8 +10,8 @@
 
     <title>Hello, world!</title>
   </head>
-  <body onload="onLoad()">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <body onload="onLoad()" >
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #82B2B7;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Animato</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,19 +31,19 @@
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="inputSearch">
-            <button class="btn btn-outline-success" type="submit" id="searchButton">Search</button>
+            <button class="btn btn-outline-secondary" type="submit" id="searchButton">Search</button>
           </form>
         </div>
       </div>
     </nav>
-    <div class="container">
+    <div class="container my-2">
       <div class="row" id="search-results"></div>
     </div>
-    <div class="container">
+    <div class="container my-2">
       <div class="row" id="fav-results">
       </div>
     </div>
-    <div class="container">
+    <div class="container my-2">
       <div class="row" id="detail-results"></div>
     </div>
   

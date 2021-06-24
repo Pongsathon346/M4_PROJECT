@@ -49,6 +49,8 @@ function showSearch(data){
     let card = document.createElement('div')
         let image = document.createElement('img')
         image.classList.add('card-img-top')
+        image.style.textAlign="center"
+        image.style.width="100%"
         image.src = data.image_url
         card.appendChild(image)
         let cardTitle = document.createElement('div')
@@ -60,7 +62,7 @@ function showSearch(data){
         cardTitle.appendChild(title)
         cardTitle.appendChild(detail)
         let button = document.createElement('button')
-        button.classList.add("btn","btn-primary")
+        button.classList.add("btn","btn-success")
         button.innerHTML = "Add Favorite"
         button.addEventListener('dblclick', function(){
             let confirmadd = confirm(`คุณอยากเพิ่ม ${data.title}  เข้าไปใน Favorite หรือไม่`)
@@ -72,7 +74,6 @@ function showSearch(data){
         box.appendChild(card)
         box.appendChild(button)
         searchResults.appendChild(box)
-        console.log(data.mal_id)
     }
 
 function onLoad(){
@@ -102,6 +103,8 @@ function showFav(data){
         box.style.width="18rem"
     let card = document.createElement('div')
     let image = document.createElement('img')
+    image.style.textAlign="center"
+    image.style.width="100%"
     image.src = data.image_url
     card.appendChild(image)
     let cardTitle = document.createElement('div')
@@ -113,7 +116,6 @@ function showFav(data){
     cardTitle.appendChild(syno)
     let button = document.createElement('button')
     button.classList.add("btn","btn-primary")
-    // button.style.margin="10px";
     button.innerHTML = "Detail"
     button.addEventListener('click', function(){
         queryDetail(data.id)
@@ -221,10 +223,16 @@ function deleteFav (id) {
             box.style.border="2px solid black"
             box.style.borderRadius="10px"
             box.style.margin="10px"
+            box.style.backgroundColor="#5E6668	"
+            box.style.color="white"
         let card = document.createElement('div')
         let image = document.createElement('img')
         image.src = data.image_url
+        image.style.margin="20px"
+        image.style.height="400px"
+        image.classList.add('img-thumbnail')
         let describe = document.createElement('div')
+        describe.style.margin="20px"
         let title = document.createElement('p')
         title.innerHTML =`Title : ${data.title}`
         let syno = document.createElement('p')
@@ -240,6 +248,7 @@ function deleteFav (id) {
         let button = document.createElement('button')
         button.classList.add("btn","btn-danger")
         button.innerHTML = "Back"
+        button.style.margin="20px"
         button.addEventListener('click', function(){
            hideAll()
            FResults.style.display='flex','justify-content-start'
