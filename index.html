@@ -5,22 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link el="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Animato Co.</title>
   </head>
   <body onload="onLoad()" style="background-color: #18181b;">
     <nav class="navbar navbar-expand-lg navbar-light " style="background-color: black;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="color: rgb(173, 34, 34); font-size: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Animato</a>
+        <a class="navbar-brand" href="#" style="color: rgb(173, 34, 34); font-size: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif; margin: 0 50px;">Animato</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" id="homeMenu" style="color: white;">Home</a>
+              <a class="nav-link active" aria-current="page" href="#" id="homeMenu" style="color: white; margin: 0 20px;">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" id="favMenu" style="color: white;">Favorite</a>
@@ -37,9 +37,12 @@
       </div>
     </nav>
     <div class="container my-2">
+      <h1 id="search-result" style="color:White; margin-bottom: 10px;">Home</h1>
+      <h1 id="search-resul" style="color:White; margin-bottom: 10px;">Search</h1>
       <div class="row" id="search-results"></div>
     </div>
     <div class="container my-2">
+      <h1 id="fav-result" style="color:White; margin-bottom: 10px;">Favorite</h1>
       <div class="row" id="fav-results">
       </div>
     </div>
