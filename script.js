@@ -54,7 +54,9 @@ function showSearch(data){
         detail.innerHTML = data.synopsis
         card.appendChild(detail)
         let button = document.createElement('button')
-        button.innerHTML = "add List"
+        button.classList.add("btn","btn-primary")
+        button.style.margin="10px";
+        button.innerHTML = "Add Favorite"
         button.addEventListener('dblclick', function(){
             let confirmadd = confirm(`คุณอยากเพิ่ม ${data.title}  เข้าไปใน Favorite หรือไม่`)
             if(confirmadd){
@@ -69,6 +71,11 @@ function showSearch(data){
 function onLoad(){
       querySearch()
 }
+document.getElementById('favMenu').addEventListener('click', (event) => {
+    hideAll()
+    FResults.style.display='block'
+    ListQuery()
+})
 
 function ListQuery(){
     fetch(`https://se104-project-backend.du.r.appspot.com/movies/632110346`).then((response)=>{
@@ -99,27 +106,42 @@ function showFav(data){
         detail.innerHTML = data.synopsis
         card.appendChild(detail)
         let button = document.createElement('button')
-        button.innerHTML = "add List"
+        button.classList.add("btn","btn-primary")
+        button.style.margin="10px";
+        button.innerHTML = "Detail"
         button.addEventListener('dblclick', function(){
             let confirmadd = confirm(`คุณอยากเพิ่ม ${data.title}  เข้าไปใน Favorite หรือไม่`)
             if(confirmadd){
                 addfavDB(data)
             }
         })
+        let button2 = document.createElement('button2')
+                button2.classList.add("btn","btn-danger")
+                button2.style.margin="10px";
+                button2.innerHTML = "Delete"
+                button2.addEventListener('click',function(){
+                    let confirmd = confirm(`Are you sure  to delete ${data.title}?`)
+                    if(confirmd){
+                        deleteFav(data.id)
+                    } 
+                })
         card.appendChild(button)
+        card.appendChild(button2)
         searchResults.appendChild(card)
         
     }
 
-function addSearchToDB(movie){
+
+
+function addSearchToDB(anime){
     var id=1
-    let body=`{"url":"${movie.url}","image_url":"${movie.image_url}","title":"${movie.title}","synopsis":"${movie.synopsis}","type":"${movie.type}","episodes":"${movie.episodes}","score":"${movie.score}","rated":"${movie.rated}","id":"${id}"}`
+    let body=`{"url":"${anime.url}","image_url":"${anime.image_url}","title":"${anime.title}","synopsis":"${anime.synopsis}","type":"${anime.type}","episodes":"${anime.episodes}","score":"${anime.score}","rated":"${anime.rated}","id":"${id}"}`
     fetch(`https://se104-project-backend.du.r.appspot.com/movies `,{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: `{"id":"632110342","movie":${body}}`
+            body: `{"id":"632110346","movie":${body}}`
         }).then(response=>{
             if(response.status == 200){
                 return response.json()
@@ -133,7 +155,6 @@ function addSearchToDB(movie){
             alert('Error')
         })
 }
-
 
 
 function addfavDB(anime){
@@ -159,6 +180,24 @@ function addfavDB(anime){
         })
 }
 
+function deleteFav (id) { 
+    fetch( `https://se104-project-backend.du.r.appspot.com/movie?id=632110346&&movieId=${id}`,{
+         method: 'DELETE' 
+    }).then(response => { 
+        if (response.status === 200)
+        { 
+            return response.json() 
+        }else{
+             throw Error(response.statusText) }
+    }).then(data =>
+            { alert(`${data.name} is now deleted`) 
+            
+    }).catch( error => 
+            { alert(`${data.name} is not in the List`) 
+    })
+    hideAll()
+    FResults.style.display='block'
+}
 
 
 
@@ -168,11 +207,7 @@ document.getElementById('homeMenu').addEventListener('click', (event) => {
     querySearch()
 })
 
-document.getElementById('favMenu').addEventListener('click', (event) => {
-    hideAll()
-    FResults.style.display='block'
-    ListQuery()
-})
+
 
 var SResults = document.getElementById('search-results')
 var FResults = document.getElementById('fav-results')
